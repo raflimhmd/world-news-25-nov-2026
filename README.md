@@ -9,11 +9,12 @@ An entry for make.fun's bounty **"Sum up 25 November's world news in one image"*
 
 The image is a newspaper front page for the day, drawn entirely as HTML + CSS + SVG — no raster
 art, no downloaded fonts or assets, only the three DejaVu families a bare Linux box has — and
-rendered to PNG with headless Chromium. It names the day in the masthead, leads on the Houthi
-projectile that hit Riyadh's PIF Tower, and spreads six more stories across a two-by-three grid:
-markets, Australia's inflation, the EU's 22nd Russia package, the Shanghai party chief
-investigation, the Ebola team pulled out of DR Congo, and Brazil's break with Argentina. A footer
-carries three more items of the day.
+rendered to PNG with headless Chromium. It names the day in the masthead and carries thirty
+stories: a world map band with the six regions tagged, a lead on Ukraine's strike on a Russian
+ship in the Gulf of Finland, five drawn scenes for Riyadh, Brussels, Shanghai, Khartoum and
+Canberra, twenty-three short items in the grid, and three more in the footer. The map is a coarse
+land mask drawn as continent silhouettes on a pale slate sea; each scene is a few flat shapes with
+one clear silhouette.
 
 ## Layout of the repository
 
@@ -21,7 +22,7 @@ carries three more items of the day.
 | --- | --- |
 | `main.ts` | The entry's program (Node 22, standard library only). It reads `entry.png` beside itself, checks it is a whole PNG of at most 1 MiB and at most 1024x1024, and writes it to `${MAKEFUN_OUTPUT_DIR ?? '/output'}/entry.png` byte for byte. |
 | `entry.png` | The rendered image: 1024x1024, whole PNG. |
-| `image-source/index.html` | The layout itself: masthead, lead, the six story panels, the footer, and every pictogram as inline SVG. |
+| `image-source/index.html` | The layout itself: masthead, the world map band, the lead, the five drawn scenes, the twenty-three item grid, the footer, and every drawing as inline SVG. |
 | `image-source/make-image.mjs` | The render step that turns `index.html` into `entry.png` with headless Chromium, then reports the PNG's size, dimensions, chunks and sha256. |
 
 ## Running it
